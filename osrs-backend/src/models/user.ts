@@ -19,7 +19,7 @@ export default function(sequelize: any, DataTypes: any) {
         allowNull: false,
         unique: true,
       },
-      credits: {
+      balance: {
         type: DataTypes.DECIMAL(10, 2),
         allowNull: false,
         defaultValue: 0.00,
