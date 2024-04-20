@@ -1,4 +1,4 @@
-export default function(sequelize: any, DataTypes: any) {
+export default function(sequelize, DataTypes) {
     const Model = sequelize.define('transaction', {
         id: {
             type: DataTypes.INTEGER,
@@ -40,12 +40,17 @@ export default function(sequelize: any, DataTypes: any) {
             type: DataTypes.ENUM('pending', 'completed', 'cancelled'),
             allowNull: false,
             defaultValue: 'pending'
+        },
+        paid: {
+            type: DataTypes.BOOLEAN,
+            allowNull: false,
+            defaultValue: false
         }
     }, {
         tableName: 'transactions'
     });
 
-    Model.associate = (models: any) => {
+    Model.associate = (models) => {
         Model.belongsTo(models.buyListing, {
             foreignKey: 'listingId'
         });

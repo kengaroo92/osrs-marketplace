@@ -1,4 +1,4 @@
-export default function(sequelize: any, DataTypes: any) {
+export default function(sequelize, DataTypes) {
     const Model = sequelize.define('balanceHistory', {
         id: {
             type: DataTypes.INTEGER,
@@ -33,7 +33,7 @@ export default function(sequelize: any, DataTypes: any) {
         tableName: 'balanceHistories'
     });
 
-    Model.associate = (models: any) => {
+    Model.associate = (models) => {
         Model.belongsTo(models.transaction, {
             foreignKey: 'transactionId'
         });

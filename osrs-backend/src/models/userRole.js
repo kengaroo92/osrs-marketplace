@@ -1,4 +1,4 @@
-export default function(sequelize: any, DataTypes: any) {
+export default function(sequelize, DataTypes) {
   const Model = sequelize.define('userRole', {
       id: {
         type: DataTypes.INTEGER,
@@ -20,7 +20,7 @@ export default function(sequelize: any, DataTypes: any) {
     ]
   });
 
-  Model.associate = (models: any) => {
+  Model.associate = (models) => {
     Model.belongsToMany(models.user, {
       through: 'usersToUserRole',
       foreignKey: 'userRoleId',

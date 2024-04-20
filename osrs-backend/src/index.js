@@ -1,9 +1,6 @@
 import express from 'express';
-import dotenv from 'dotenv';
-dotenv.config();
-
-import { connectToDatabase } from "./config/initialize_db";
-import { initializeRoutes } from './routes';
+import { connectToDatabase } from "./config/initialize_db.js";
+import { initializeRoutes } from './routes/index.js';
 
 const app = express();
 const port = 3000;

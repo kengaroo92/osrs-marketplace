@@ -1,5 +1,5 @@
-export default function(sequelize: any, DataTypes: any) {
-    const Model = sequelize.define('buyListing', {
+export default function(sequelize, DataTypes) {
+    const Model = sequelize.define('sellListing', {
         id: {
             type: DataTypes.INTEGER,
             autoIncrement: true,
@@ -37,12 +37,17 @@ export default function(sequelize: any, DataTypes: any) {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
+        },
+        status: {
+            type: DataTypes.ENUM('pending', 'cancelled', 'completed'),
+            allowNull: false,
+            defaultValue: 'pending'
         }
     }, {
-        tableName: 'buyListings'
+        tableName: 'sellListings'
     });
 
-    Model.associate = (models: any) => {
+    Model.associate = (models) => {
         Model.belongsTo(models.user, {
             foreignKey: 'userId'
         });

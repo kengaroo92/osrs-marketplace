@@ -1,4 +1,4 @@
-export default function(sequelize: any, DataTypes: any) {
+export default function(sequelize, DataTypes) {
   const Model = sequelize.define('usersToUserRole', {
       userId: {
         type: DataTypes.INTEGER,
