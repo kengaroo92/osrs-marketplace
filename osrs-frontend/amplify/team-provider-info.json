@@ -1,19 +1,20 @@
 {
   "dev": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-osrsfrontend-dev-dd3b8-authRole",
-      "UnauthRoleArn": "arn:aws:iam::533267032120:role/amplify-osrsfrontend-dev-dd3b8-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::533267032120:role/amplify-osrsfrontend-dev-dd3b8-authRole",
+      "AuthRoleName": "amplify-osrsfrontend-dev-825f2-authRole",
+      "UnauthRoleArn": "arn:aws:iam::533267032120:role/amplify-osrsfrontend-dev-825f2-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::533267032120:role/amplify-osrsfrontend-dev-825f2-authRole",
       "Region": "us-east-1",
-      "DeploymentBucketName": "amplify-osrsfrontend-dev-dd3b8-deployment",
-      "UnauthRoleName": "amplify-osrsfrontend-dev-dd3b8-unauthRole",
-      "StackName": "amplify-osrsfrontend-dev-dd3b8",
-      "StackId": "arn:aws:cloudformation:us-east-1:533267032120:stack/amplify-osrsfrontend-dev-dd3b8/6d67cf10-f6b4-11ee-94a1-12b4ced28c07",
-      "AmplifyAppId": "dfw2ias49dfkj"
+      "DeploymentBucketName": "amplify-osrsfrontend-dev-825f2-deployment",
+      "UnauthRoleName": "amplify-osrsfrontend-dev-825f2-unauthRole",
+      "StackName": "amplify-osrsfrontend-dev-825f2",
+      "StackId": "arn:aws:cloudformation:us-east-1:533267032120:stack/amplify-osrsfrontend-dev-825f2/faf259c0-fc1a-11ee-ac4c-126e203daf05",
+      "AmplifyAppId": "djilskasq1f5b"
     },
     "categories": {
       "auth": {
-        "osrsfrontend07eece18": {}
+        "osrsfrontend274e2317274e2317": {},
+        "userPoolGroups": {}
       }
     }
   }
