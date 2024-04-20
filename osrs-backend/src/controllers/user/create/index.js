@@ -21,7 +21,6 @@ export default async function(req, res) {
         }
     
         const user = await db.models.user.create(body);
-
         return res.status(201).json(user);
     } catch (error) {
         console.error(error);
