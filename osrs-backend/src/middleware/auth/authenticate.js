@@ -3,13 +3,17 @@ const jwt = require('jsonwebtoken');
 const jwksClient = require('jwks-rsa');
 
 const client = jwksClient({
-  jwksUri: process.env.COGNITO_USER_POOL
+  jwksUri: process.env.COGNITO_USER_POOL,
+  cache: true
 });
 
 const getKey = (header, callback) => {
   client.getSigningKey(header.kid, (err, key) => {
-    if (!key) {
+    if (err) {
       return callback(err);
+    }
+    if (!key) {
+      return callback(new Error('No signing key found'));
     }
     const signingKey = key.getPublicKey();
     callback(null, signingKey);
@@ -18,18 +22,20 @@ const getKey = (header, callback) => {
 
 export const authenticateToken = (req, res, next) => {
   const authHeader = req.headers.authorization;
-  const token = authHeader?.split(' ')[1];
-
-  if (!token) {
-    res.sendStatus(401);
-    return;
+  if (!authHeader || !authHeader.startsWith('Bearer ')) {
+    return res.status(401).json({ message: 'Authorization header is missing or not a Bearer token.' });
   }
+
+  const token = authHeader.split(' ')[1];
 
   jwt.verify(token, getKey, { algorithms: ['RS256'] }, (err, decoded) => {
     if (err) {
-      return res.sendStatus(403);
+      const message = `Token verification failed: ${err.message}`;
+      return res.status(403).json({ message });
     }
     req.user = decoded;
     next();
   });
 };
+
+export default authenticateToken;
