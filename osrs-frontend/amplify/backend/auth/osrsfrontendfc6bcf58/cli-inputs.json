@@ -1,10 +1,10 @@
 {
   "version": "1",
   "cognitoConfig": {
-    "identityPoolName": "osrsfrontend274e2317_identitypool_274e2317",
+    "identityPoolName": "osrsfrontendfc6bcf58_identitypool_fc6bcf58",
     "allowUnauthenticatedIdentities": false,
-    "resourceNameTruncated": "osrsfr274e2317",
-    "userPoolName": "osrsfrontend274e2317_userpool_274e2317",
+    "resourceNameTruncated": "osrsfrfc6bcf58",
+    "userPoolName": "osrsfrontendfc6bcf58_userpool_fc6bcf58",
     "autoVerifiedAttributes": [
       "email"
     ],
@@ -24,31 +24,23 @@
     ],
     "aliasAttributes": [],
     "userpoolClientGenerateSecret": false,
-    "userpoolClientRefreshTokenValidity": "30",
+    "userpoolClientRefreshTokenValidity": 30,
     "userpoolClientWriteAttributes": [
       "email"
     ],
     "userpoolClientReadAttributes": [
       "email"
     ],
-    "userpoolClientLambdaRole": "osrsfr274e2317_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "osrsfrfc6bcf58_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "274e2317",
-    "resourceName": "osrsfrontend274e2317274e2317",
+    "sharedId": "fc6bcf58",
+    "resourceName": "osrsfrontendfc6bcf58",
     "authSelections": "identityPoolAndUserPool",
-    "useDefault": "manual",
-    "thirdPartyAuth": false,
+    "useDefault": "default",
     "usernameAttributes": [
       "email"
     ],
-    "userPoolGroups": true,
-    "adminQueries": true,
-    "triggers": {},
-    "hostedUI": false,
-    "userPoolGroupList": [
-      "Admins",
-      "Users"
-    ],
+    "userPoolGroupList": [],
     "serviceName": "Cognito",
     "usernameCaseSensitive": false,
     "useEnabledMfas": true
