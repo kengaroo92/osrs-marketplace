@@ -14,6 +14,10 @@ export default function(sequelize, DataTypes) {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      dateOfBirth: {
+        type: DataTypes.DATEONLY,
+        allowNull: false,
+      },
       email: {
         type: DataTypes.STRING,
         allowNull: false,
