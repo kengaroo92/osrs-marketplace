@@ -1,7 +1,7 @@
-// pages/index.js
+// File: pages/index.js
 
 // React Imports
-import React from "react";
+import React, { useState, useEffect } from "react";
 // MUI Imports
 import {
     Container,
@@ -13,11 +13,23 @@ import {
     Link,
     Button,
 } from "@mui/material";
-// Context Imports
-import { useAuth } from "../context/AuthProvider"; // Adjust the path as necessary
+// Amplify Imports
+import { AmplifySignOut } from "@aws-amplify/ui-react";
+// Util Imports
+import { checkAuthStatus } from "../utils/authUtils";
 
 export default function Home() {
-    const { user } = useAuth(); // Extract user from the auth context
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Calles the checkAuthStatus function on component mount.
+    useEffect(() => {
+        const fetchUser = async () => {
+            const user = await checkAuthStatus();
+            setIsAuthenticated(!!user); // Sets isAuthenticated to true if user is not null.
+        };
+
+        fetchUser();
+    }, []);
 
     return (
         <Box
@@ -37,7 +49,7 @@ export default function Home() {
                     competitive prices.
                 </Typography>
 
-                {user ? (
+                {isAuthenticated ? (
                     <React.Fragment>
                         <Typography variant='h5' component='h2' gutterBottom>
                             Services

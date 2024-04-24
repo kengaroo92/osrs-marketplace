@@ -1,24 +1,26 @@
+// File: pages/_app.js
+
 // React Imports
 import React from "react";
 // Component Imports
+import { Auth } from "../components/Auth";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 // Amplify Imports
 import { Amplify } from "aws-amplify";
-import config from "../aws-exports";
+import AmplifyConfig from "../aws-exports";
 // MUI Imports
 import { Container, Box } from "@mui/material";
 // Styles
 import "../styles/globals.css";
-import { AuthProvider } from "@/context/AuthProvider";
 
-Amplify.configure(config);
+Amplify.configure(AmplifyConfig);
 
-function MyApp({ Component, pageProps }) {
+function App({ Component, pageProps }) {
     const topMargin = "64px";
 
     return (
-        <AuthProvider>
+        <Auth>
             <Box
                 sx={{
                     display: "flex",
@@ -42,8 +44,8 @@ function MyApp({ Component, pageProps }) {
                 </Container>
                 <Footer />
             </Box>
-        </AuthProvider>
+        </Auth>
     );
 }
 
-export default MyApp;
+export default App;

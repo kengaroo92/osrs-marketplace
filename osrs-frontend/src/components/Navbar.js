@@ -1,14 +1,28 @@
+// File: components/Navbar.js
+
 // React Imports
-import React from "react";
+import React, { useState, useEffect } from "react";
 // MUI Imports
 import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
 // Next Imports
 import Link from "next/link";
-// Hooks Imports
-import { useAuth } from "../context/AuthProvider";
+// Amplify Imports
+import { AmplifySignOut } from "@aws-amplify/ui-react";
+// Util Imports
+import { checkAuthStatus } from "../utils/authUtils";
 
 const Navbar = () => {
-    const { user } = useAuth();
+    const [isAuthenticated, setIsAuthenticated] = useState(false);
+
+    // Calles the checkAuthStatus function on component mount.
+    useEffect(() => {
+        const fetchUser = async () => {
+            const user = await checkAuthStatus();
+            setIsAuthenticated(!!user); // Sets isAuthenticated to true if user is not null.
+        };
+
+        fetchUser();
+    }, []);
 
     return (
         <AppBar position='static' color='primary' elevation={0}>
@@ -33,14 +47,21 @@ const Navbar = () => {
                     <Link href='/contact' passHref>
                         <Button color='inherit'>Contact</Button>
                     </Link>
-                    {!user && (
+                    {!isAuthenticated ? (
                         <>
-                            <Link href='/login' passHref>
+                            <Link href='/auth/login' passHref>
                                 <Button color='inherit'>Login</Button>
                             </Link>
-                            <Link href='/signup' passHref>
+                            <Link href='/auth/signup' passHref>
                                 <Button color='inherit'>Sign Up</Button>
                             </Link>
+                        </>
+                    ) : (
+                        <>
+                            <AmplifySignOut />
+                            <Typography>
+                                Welcome, {user.attributes.email}
+                            </Typography>
                         </>
                     )}
                 </Toolbar>
