@@ -1,4 +1,4 @@
-export default function checkRoles(requiredRoles) {
+export function checkRoles(requiredRoles) {
     return async function(req, res, next) {
         try {
             const userRoles = req.user.roles;

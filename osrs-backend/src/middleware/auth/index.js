@@ -1,3 +1,3 @@
-export { authenticateToken } from './authenticateToken.js';
+export { authenticateToken } from './authenticate.js';
 export { getUserRoles } from './getUserRoles.js';
 export { checkRoles } from './checkRoles.js';

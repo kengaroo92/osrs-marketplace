@@ -1,6 +1,5 @@
-const express = require('express');
-const jwt = require('jsonwebtoken');
-const jwksClient = require('jwks-rsa');
+import jwt from 'jsonwebtoken';
+import jwksClient from 'jwks-rsa';
 
 const client = jwksClient({
   jwksUri: process.env.COGNITO_USER_POOL,

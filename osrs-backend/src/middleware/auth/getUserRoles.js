@@ -1,4 +1,4 @@
-export default async function getUserRoles(req, res, next) {
+export async function getUserRoles(req, res, next) {
     try {
         const user = await db.models.user.findByPk(req.user.id, {
             include: [
