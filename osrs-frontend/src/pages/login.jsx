@@ -7,8 +7,7 @@ import { useRouter } from "next/router";
 // Amplify Imports
 import { signIn } from "aws-amplify/auth";
 import { signOut } from "aws-amplify/auth";
-import { currentAuthenticatedUser } from "../utils/AuthUtils";
-import { fetchAuthSession } from "aws-amplify/auth";
+//import { currentAuthenticatedUser } from "../utils/AuthUtils";
 // Redux Imports
 import { useSelector, useDispatch } from "react-redux";
 import { setUser, clearUser } from "../store/slices/userSlice";
@@ -20,6 +19,7 @@ const Login = () => {
     const router = useRouter();
     const dispatch = useDispatch();
 
+    /*
     useEffect(() => {
         const checkUser = async () => {
             try {
@@ -32,6 +32,7 @@ const Login = () => {
         };
         checkUser();
     }, [dispatch]);
+    */
 
     async function handleSignIn(e) {
         e.preventDefault();
