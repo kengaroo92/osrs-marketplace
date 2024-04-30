@@ -7,11 +7,11 @@ import { useRouter } from "next/router";
 // Amplify Imports
 import { signIn } from "aws-amplify/auth";
 import { signOut } from "aws-amplify/auth";
-import { currentAuthenticatedUser } from "@/utils/AuthUtils";
+import { currentAuthenticatedUser } from "../utils/AuthUtils";
 import { fetchAuthSession } from "aws-amplify/auth";
 // Redux Imports
 import { useSelector, useDispatch } from "react-redux";
-import { setUser, clearUser } from "@/store/slices/userSlice";
+import { setUser, clearUser } from "../store/slices/userSlice";
 
 const Login = () => {
     const [email, setEmail] = useState("");
