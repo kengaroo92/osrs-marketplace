@@ -37,6 +37,11 @@ export default function(sequelize, DataTypes) {
             type: DataTypes.BOOLEAN,
             allowNull: false,
             defaultValue: false
+        },
+        status: {
+            type: DataTypes.ENUM('pending', 'cancelled', 'completed'),
+            allowNull: false,
+            defaultValue: 'pending'
         }
     }, {
         tableName: 'buyListings'
