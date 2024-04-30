@@ -28,7 +28,7 @@ export default function Home() {
         >
             <Container component='main' maxWidth='sm' sx={{ my: 4, flex: 1 }}>
                 <Typography variant='h5' component='h2' gutterBottom>
-                    About Us
+                    About Us Retards
                 </Typography>
                 <Typography variant='body1' paragraph>
                     OSRS Marketplace is your trusted source for buying and
