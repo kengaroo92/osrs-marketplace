@@ -10,7 +10,7 @@ import Login from "./login";
 import Signup from "./signup";
 // Amplify Imports
 import { Amplify } from "aws-amplify";
-import AmplifyConfig from "../aws-exports";
+import AmplifyConfig from "../amplifyconfiguration";
 // MUI Imports
 import { Container, Box } from "@mui/material";
 // Redux Imports
