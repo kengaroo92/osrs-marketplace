@@ -1,28 +1,32 @@
 // File: components/Navbar.js
 
 // React Imports
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 // MUI Imports
 import { AppBar, Toolbar, Typography, Button, Container } from "@mui/material";
 // Next Imports
 import Link from "next/link";
 // Amplify Imports
-import { AmplifySignOut } from "@aws-amplify/ui-react";
-// Util Imports
-import { checkAuthStatus } from "../utils/authUtils";
+import { signOut } from "aws-amplify/auth";
+// Redux Imports
+import { useSelector, useDispatch } from "react-redux";
+import { setUser, clearUser } from "../store/slices/userSlice";
 
 const Navbar = () => {
-    const [isAuthenticated, setIsAuthenticated] = useState(false);
+    const user = useSelector((state) => state.user.currentUser);
+    const dispatch = useDispatch();
 
-    // Calles the checkAuthStatus function on component mount.
-    useEffect(() => {
-        const fetchUser = async () => {
-            const user = await checkAuthStatus();
-            setIsAuthenticated(!!user); // Sets isAuthenticated to true if user is not null.
-        };
+    // Handle Sign Out.
+    const handleSignOut = async () => {
+        try {
+            await signOut();
+            dispatch(clearUser());
+        } catch (error) {
+            console.error("Error signing out user: ", error);
+        }
+    };
 
-        fetchUser();
-    }, []);
+    console.log("User: ", user);
 
     return (
         <AppBar position='static' color='primary' elevation={0}>
@@ -47,20 +51,22 @@ const Navbar = () => {
                     <Link href='/contact' passHref>
                         <Button color='inherit'>Contact</Button>
                     </Link>
-                    {!isAuthenticated ? (
+                    {!user ? (
                         <>
-                            <Link href='/auth/login' passHref>
+                            <Link href='/login' passHref>
                                 <Button color='inherit'>Login</Button>
                             </Link>
-                            <Link href='/auth/signup' passHref>
+                            <Link href='/signup' passHref>
                                 <Button color='inherit'>Sign Up</Button>
                             </Link>
                         </>
                     ) : (
                         <>
-                            <AmplifySignOut />
+                            <Button color='inherit' onClick={handleSignOut}>
+                                Sign Out
+                            </Button>
                             <Typography>
-                                Welcome, {user.attributes.email}
+                                Welcome, {user.signInDetails.loginId}
                             </Typography>
                         </>
                     )}

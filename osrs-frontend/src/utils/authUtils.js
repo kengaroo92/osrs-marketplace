@@ -1,13 +1,14 @@
-// File: utils/authUtils.js
+import { getCurrentUser } from "aws-amplify/auth";
 
-// Amplify Imports
-import Auth from "aws-amplify";
-
-export const checkAuthStatus = async () => {
+async function currentAuthenticatedUser() {
     try {
-        const user = await Auth.currentAuthenticatedUser();
-        return true;
+        const user = await getCurrentUser();
+        console.log("Current Authenticated User: ", user);
+        return user;
     } catch (error) {
+        console.error("Error getting current authenticated user: ", error);
         return null;
     }
-};
+}
+
+export { currentAuthenticatedUser };
